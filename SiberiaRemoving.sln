@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving", "SiberiaRemoving\SiberiaRemoving.csproj", "{C59AB702-C480-45E3-B7BF-FB445BD0CA53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2017", "SiberiaRemoving\SiberiaRemoving_2017.csproj", "{C59AB702-C480-45E3-B7BF-FB445BD0CA53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2016", "SiberiaRemoving_2016\SiberiaRemoving_2016.csproj", "{BDEECB32-5968-4FDC-8E58-BAE153EFDEFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2015", "SiberiaRemoving_2015\SiberiaRemoving_2015.csproj", "{8D5140A5-7F82-448F-BC31-8BB27227E10E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2014", "SiberiaRemoving_2014\SiberiaRemoving_2014.csproj", "{B741A845-4787-4186-97F0-F44DCAD75E23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{C59AB702-C480-45E3-B7BF-FB445BD0CA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C59AB702-C480-45E3-B7BF-FB445BD0CA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C59AB702-C480-45E3-B7BF-FB445BD0CA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDEECB32-5968-4FDC-8E58-BAE153EFDEFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDEECB32-5968-4FDC-8E58-BAE153EFDEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDEECB32-5968-4FDC-8E58-BAE153EFDEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDEECB32-5968-4FDC-8E58-BAE153EFDEFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D5140A5-7F82-448F-BC31-8BB27227E10E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D5140A5-7F82-448F-BC31-8BB27227E10E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D5140A5-7F82-448F-BC31-8BB27227E10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D5140A5-7F82-448F-BC31-8BB27227E10E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B741A845-4787-4186-97F0-F44DCAD75E23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B741A845-4787-4186-97F0-F44DCAD75E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B741A845-4787-4186-97F0-F44DCAD75E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B741A845-4787-4186-97F0-F44DCAD75E23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
