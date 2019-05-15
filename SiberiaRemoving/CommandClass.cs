@@ -16,11 +16,13 @@ namespace SiberiaRemoving
     {
       string text = "Siberia";
       Document mdiActiveDocument = Application.DocumentManager.MdiActiveDocument;
+      if (mdiActiveDocument == null) return;
+
       Database database = mdiActiveDocument.Database;
       Editor editor = mdiActiveDocument.Editor;
       using (Transaction transaction = database.TransactionManager.StartTransaction())
       {
-        RegAppTable regAppTable = transaction.GetObject(database.RegAppTableId, 0) as RegAppTable;
+        RegAppTable regAppTable = transaction.GetObject(database.RegAppTableId, OpenMode.ForRead) as RegAppTable;
         if (regAppTable.Has(text))
         {
           regAppTable.UpgradeOpen();
@@ -31,7 +33,7 @@ namespace SiberiaRemoving
             regAppTableRecord.Erase(true);
           }
         }
-        DBDictionary dBDictionary = transaction.GetObject(database.NamedObjectsDictionaryId, 0) as DBDictionary;
+        DBDictionary dBDictionary = transaction.GetObject(database.NamedObjectsDictionaryId, OpenMode.ForRead) as DBDictionary;
         if (dBDictionary.Contains(text))
         {
           dBDictionary.UpgradeOpen();
