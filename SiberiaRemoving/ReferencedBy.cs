@@ -1,4 +1,32 @@
-﻿using System;
+﻿// Copy from: ADN-DevTech / MgdDbg
+// Link: https://github.com/ADN-DevTech/MgdDbg/blob/master/Snoop/Data/ReferencedBy.cs
+// Autor: Augusto Goncalves : 
+// augusto.goncalves@autodesk.com  and http://developer.autodesk.com/
+//
+//
+//
+// (C) Copyright 2006 by Autodesk, Inc. 
+//
+// Permission to use, copy, modify, and distribute this software in
+// object code form for any purpose and without fee is hereby granted, 
+// provided that the above copyright notice appears in all copies and 
+// that both that copyright notice and the limited warranty and
+// restricted rights notice below appear in all supporting 
+// documentation.
+//
+// AUTODESK PROVIDES THIS PROGRAM "AS IS" AND WITH ALL FAULTS. 
+// AUTODESK SPECIFICALLY DISCLAIMS ANY IMPLIED WARRANTY OF
+// MERCHANTABILITY OR FITNESS FOR A PARTICULAR USE.  AUTODESK, INC. 
+// DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
+// UNINTERRUPTED OR ERROR FREE.
+//
+// Use, duplication, or disclosure by the U.S. Government is subject to 
+// restrictions set forth in FAR 52.227-19 (Commercial Computer
+// Software - Restricted Rights) and DFAR 252.227-7013(c)(1)(ii)
+// (Rights in Technical Data and Computer Software), as applicable.
+//
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +40,7 @@ namespace SiberiaRemoving
   {
 
     public AcDb.ObjectIdCollection m_hardPointerIds = new AcDb.ObjectIdCollection();
-    //public AcDb.ObjectIdCollection m_softPointerIds = new AcDb.ObjectIdCollection();
-    //public AcDb.ObjectIdCollection m_hardOwnershipIds = new AcDb.ObjectIdCollection();
-    //public AcDb.ObjectIdCollection m_softOwnershipIds = new AcDb.ObjectIdCollection();
+
 
     protected AcDb.ObjectId m_val;
     protected int m_count = 0;
@@ -34,8 +60,6 @@ namespace SiberiaRemoving
       if (mdiActiveDocument == null) return;
 
       AcDb.Database database = mdiActiveDocument.Database;
-      //Editor editor = mdiActiveDocument.Editor;
-
 
       using (var trHelp = database.TransactionManager.StartTransaction())
       {
@@ -46,9 +70,6 @@ namespace SiberiaRemoving
       // since we aren't calculating this in the destructor, we have to re-init every time they
       // do the drill-down.
       m_hardPointerIds.Clear();
-      //m_softPointerIds.Clear();
-      //m_hardOwnershipIds.Clear();
-      //m_softOwnershipIds.Clear();
 
       AcDb.Database db = m_val.Database;
 
@@ -63,9 +84,6 @@ namespace SiberiaRemoving
       ProcessObject(trHelp, m_val, db.UcsTableId);
       ProcessObject(trHelp, m_val, db.ViewportTableId);
       ProcessObject(trHelp, m_val, db.ViewTableId);
-
-        //string str = string.Format("Visited: {0:d}, Skipped: {1:d}, DB Approx: {2:d}", m_count, m_skipped, db.ApproxNumObjects);
-        //MessageBox.Show(str);
 
         trHelp.Commit();
 
@@ -97,21 +115,13 @@ namespace SiberiaRemoving
         m_skipped++;
     }
 
+
     private void
     RecordReferences(AcDb.ObjectId lookForObjId, AcDb.DBObject objToCheck, ReferenceFiler filer)
     {
       // now see if we showed up in any of the lists
       if (filer.m_hardPointerIds.Contains(lookForObjId))
         m_hardPointerIds.Add(objToCheck.ObjectId);
-
-      //if (filer.m_softPointerIds.Contains(lookForObjId))
-      //  m_softPointerIds.Add(objToCheck.ObjectId);
-
-      //if (filer.m_hardOwnershipIds.Contains(lookForObjId))
-      //  m_hardOwnershipIds.Add(objToCheck.ObjectId);
-
-      //if (filer.m_softOwnershipIds.Contains(lookForObjId))
-      //  m_softOwnershipIds.Add(objToCheck.ObjectId);
     }
   }
 }

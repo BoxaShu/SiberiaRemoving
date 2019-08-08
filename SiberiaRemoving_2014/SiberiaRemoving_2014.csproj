@@ -87,6 +87,9 @@
     <Compile Include="..\SiberiaRemoving\Initialization.cs">
       <Link>Initialization.cs</Link>
     </Compile>
+    <Compile Include="..\SiberiaRemoving\ReferenceFiler.cs">
+      <Link>ReferenceFiler.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
