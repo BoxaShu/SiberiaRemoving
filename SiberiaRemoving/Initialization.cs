@@ -19,8 +19,8 @@ namespace SiberiaRemoving
       stringBuilder.AppendLine("\nДанная программа предназначена на данный момент");
       stringBuilder.AppendLine("только для удаления невидимых объектов, некоей \"Siberia\"");
       stringBuilder.AppendLine("(предположительно, Autodesk СПДС, без наличия оного)");
-      stringBuilder.AppendLine("ПРИМЕНЕНИЕ: команда bargSiberiaRemove");
-      stringBuilder.AppendLine("\nАвтор: bargool сама программа взята тут: https://forum.dwg.ru/showpost.php?p=1000728&postcount=10");
+      stringBuilder.AppendLine("ПРИМЕНЕНИЕ: команда SiberiaRemove");
+      stringBuilder.AppendLine("\nКопирайт: ООО \"НСК-Проект\"");
       editor.WriteMessage(stringBuilder.ToString());
     }
     void IExtensionApplication.Terminate()

@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\_Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -86,6 +86,12 @@
     </Compile>
     <Compile Include="..\SiberiaRemoving\Initialization.cs">
       <Link>Initialization.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\ReferencedBy.cs">
+      <Link>ReferencedBy.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\ReferenceFiler.cs">
+      <Link>ReferenceFiler.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

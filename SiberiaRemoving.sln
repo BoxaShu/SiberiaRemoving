@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2015", "Sib
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2014", "SiberiaRemoving_2014\SiberiaRemoving_2014.csproj", "{B741A845-4787-4186-97F0-F44DCAD75E23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2018", "SiberiaRemoving_2018\SiberiaRemoving_2018.csproj", "{74A1BFD3-7B76-4635-85CF-B6660CF4F429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2019", "SiberiaRemoving_2019\SiberiaRemoving_2019.csproj", "{AF81A2D3-2A9D-465F-AE9C-FD0A2CAE2D71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{B741A845-4787-4186-97F0-F44DCAD75E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B741A845-4787-4186-97F0-F44DCAD75E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B741A845-4787-4186-97F0-F44DCAD75E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74A1BFD3-7B76-4635-85CF-B6660CF4F429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74A1BFD3-7B76-4635-85CF-B6660CF4F429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74A1BFD3-7B76-4635-85CF-B6660CF4F429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74A1BFD3-7B76-4635-85CF-B6660CF4F429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF81A2D3-2A9D-465F-AE9C-FD0A2CAE2D71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF81A2D3-2A9D-465F-AE9C-FD0A2CAE2D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF81A2D3-2A9D-465F-AE9C-FD0A2CAE2D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF81A2D3-2A9D-465F-AE9C-FD0A2CAE2D71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
