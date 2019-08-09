@@ -1,4 +1,4 @@
-﻿// Copy from: ADN-DevTech / MgdDbg
+﻿// Copy and modify from: ADN-DevTech / MgdDbg
 // Link: https://github.com/ADN-DevTech/MgdDbg/blob/master/Snoop/Data/ReferencedBy.cs
 // Autor: Augusto Goncalves : 
 // augusto.goncalves@autodesk.com  and http://developer.autodesk.com/
