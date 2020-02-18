@@ -83,6 +83,9 @@
     <Compile Include="..\SiberiaRemoving\CommandClass.cs">
       <Link>CommandClass.cs</Link>
     </Compile>
+    <Compile Include="..\SiberiaRemoving\EventRun.cs">
+      <Link>EventRun.cs</Link>
+    </Compile>
     <Compile Include="..\SiberiaRemoving\Initialization.cs">
       <Link>Initialization.cs</Link>
     </Compile>
@@ -91,6 +94,9 @@
     </Compile>
     <Compile Include="..\SiberiaRemoving\ReferenceFiler.cs">
       <Link>ReferenceFiler.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\XDataExtantion.cs">
+      <Link>XDataExtantion.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

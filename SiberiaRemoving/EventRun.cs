@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 
 
-[assembly: CommandClass(typeof(SiberiaRemoving.CommandClass))]
-
 namespace SiberiaRemoving
 {
-  public static class CommandClass
+  class EventRun
   {
 
     /// <summary>
@@ -22,8 +22,14 @@ namespace SiberiaRemoving
     public const string AppName = "Siberia";
 
 
-    [CommandMethod("SiberiaRemove")]
-    public static void bxSiberiaRemove()
+    public void bxSiberiaEventRun()
+    {
+
+    }
+
+
+
+    private void bxSiberiaEventMain()
     {
       Document mdiActiveDocument = Application.DocumentManager.MdiActiveDocument;
       if (mdiActiveDocument == null) return;
@@ -127,10 +133,9 @@ namespace SiberiaRemoving
         editor.WriteMessage($"\nУдалено {erase} записей");
         //Правим ошибки с выводом в консоль
 
-        editor.WriteMessage($"\nПроводим аудит файла");
-        database.Audit(true, true);
+        //editor.WriteMessage($"\nПроводим аудит файла");
+        //database.Audit(true, true);
 
-        Application.ShowAlertDialog("Очистка закончена.");
       }
     }
 

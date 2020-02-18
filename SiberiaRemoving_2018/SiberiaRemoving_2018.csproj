@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\_Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AcCoreMgd">
+      <HintPath>..\..\..\..\..\_SDK\Autodesk\Autocad\ObjectARX_2018\inc\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDbMgd">
+      <HintPath>..\..\..\..\..\_SDK\Autodesk\Autocad\ObjectARX_2018\inc\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMgd">
+      <HintPath>..\..\..\..\..\_SDK\Autodesk\Autocad\ObjectARX_2018\inc\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +52,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SiberiaRemoving\CommandClass.cs">
+      <Link>CommandClass.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\EventRun.cs">
+      <Link>EventRun.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\Initialization.cs">
+      <Link>Initialization.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\ReferencedBy.cs">
+      <Link>ReferencedBy.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\ReferenceFiler.cs">
+      <Link>ReferenceFiler.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\XDataExtantion.cs">
+      <Link>XDataExtantion.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\SiberiaRemoving\packages.config">
+      <Link>packages.config</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

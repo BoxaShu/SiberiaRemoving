@@ -7,16 +7,17 @@
     <ProjectGuid>{AF81A2D3-2A9D-465F-AE9C-FD0A2CAE2D71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SiberiaRemoving_2019</RootNamespace>
+    <RootNamespace>SiberiaRemoving</RootNamespace>
     <AssemblyName>SiberiaRemoving_2019</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\_Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,12 +25,24 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\_Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AcCoreMgd">
+      <HintPath>..\..\..\..\..\_SDK\Autodesk\Autocad\ObjectARX_2019\inc\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDbMgd">
+      <HintPath>..\..\..\..\..\_SDK\Autodesk\Autocad\ObjectARX_2019\inc\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMgd">
+      <HintPath>..\..\..\..\..\_SDK\Autodesk\Autocad\ObjectARX_2019\inc\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,10 +56,27 @@
     <Compile Include="..\SiberiaRemoving\CommandClass.cs">
       <Link>CommandClass.cs</Link>
     </Compile>
+    <Compile Include="..\SiberiaRemoving\EventRun.cs">
+      <Link>EventRun.cs</Link>
+    </Compile>
     <Compile Include="..\SiberiaRemoving\Initialization.cs">
       <Link>Initialization.cs</Link>
     </Compile>
+    <Compile Include="..\SiberiaRemoving\ReferencedBy.cs">
+      <Link>ReferencedBy.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\ReferenceFiler.cs">
+      <Link>ReferenceFiler.cs</Link>
+    </Compile>
+    <Compile Include="..\SiberiaRemoving\XDataExtantion.cs">
+      <Link>XDataExtantion.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\SiberiaRemoving\packages.config">
+      <Link>packages.config</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
