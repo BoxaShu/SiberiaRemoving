@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
@@ -126,19 +126,16 @@ namespace SiberiaRemoving
         database.Purge(forPurge);
         editor.WriteMessage($"\nУдалено {erase} записей");
         //Правим ошибки с выводом в консоль
-
+#if (!ACAD2014)
         editor.WriteMessage($"\nПроводим аудит файла");
-        database.Audit(true, true);
+        //database.Audit(true, true);
 
+        database.Audit(true, true);
+#else
+        editor.WriteMessage($"\nПоведите аудит файла!!!");
+#endif
         Application.ShowAlertDialog("Очистка закончена.");
       }
     }
-
-
-
-
-
-
-
   }
 }
