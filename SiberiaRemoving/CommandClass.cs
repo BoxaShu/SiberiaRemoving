@@ -123,16 +123,18 @@ namespace SiberiaRemoving
 
         }
 
-        database.Purge(forPurge);
         editor.WriteMessage($"\nУдалено {erase} записей");
         //Правим ошибки с выводом в консоль
 #if (!ACAD2014)
+
+        database.Purge(forPurge);
+
         editor.WriteMessage($"\nПроводим аудит файла");
         //database.Audit(true, true);
 
         database.Audit(true, true);
 #else
-        editor.WriteMessage($"\nПоведите аудит файла!!!");
+        editor.WriteMessage($"\nПоведите очистку и аудит файла!!!");
 #endif
         Application.ShowAlertDialog("Очистка закончена.");
       }
