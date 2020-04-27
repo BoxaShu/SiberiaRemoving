@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,9 +55,6 @@
   <ItemGroup>
     <Compile Include="..\SiberiaRemoving\CommandClass.cs">
       <Link>CommandClass.cs</Link>
-    </Compile>
-    <Compile Include="..\SiberiaRemoving\EventRun.cs">
-      <Link>EventRun.cs</Link>
     </Compile>
     <Compile Include="..\SiberiaRemoving\Initialization.cs">
       <Link>Initialization.cs</Link>

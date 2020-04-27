@@ -46,20 +46,20 @@ namespace SiberiaRemoving
     protected int m_count = 0;
     protected int m_skipped = 0;
 
-    public ReferencedBy( AcDb.ObjectId val)
+    public ReferencedBy(AcDb.Database database,  AcDb.ObjectId val)
     {
       m_val = val;
-      BruteForceFindReferences();
+      BruteForceFindReferences(database);
     }
 
 
     private void
-    BruteForceFindReferences()
+    BruteForceFindReferences(AcDb.Database database)
     {
-      App.Document mdiActiveDocument = App.Application.DocumentManager.MdiActiveDocument;
-      if (mdiActiveDocument == null) return;
+      //App.Document mdiActiveDocument = App.Application.DocumentManager.MdiActiveDocument;
+      //if (mdiActiveDocument == null) return;
 
-      AcDb.Database database = mdiActiveDocument.Database;
+      //AcDb.Database database = mdiActiveDocument.Database;
 
       using (var trHelp = database.TransactionManager.StartTransaction())
       {

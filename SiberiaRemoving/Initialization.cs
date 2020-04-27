@@ -1,91 +1,145 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
-//using System.Threading.Tasks;
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.EditorInput;
-using Autodesk.AutoCAD.Runtime;
+using System.Threading.Tasks;
+
+
+using App = Autodesk.AutoCAD.ApplicationServices;
+using cad = Autodesk.AutoCAD.ApplicationServices.Application;
+using Db = Autodesk.AutoCAD.DatabaseServices;
+using Ed = Autodesk.AutoCAD.EditorInput;
+using Gem = Autodesk.AutoCAD.Geometry;
+using Rtm = Autodesk.AutoCAD.Runtime;
 
 
 namespace SiberiaRemoving
 {
-    public class Initialization : IExtensionApplication
+  public class Initialization : Rtm.IExtensionApplication
   {
-    void IExtensionApplication.Initialize()
-    {
-      Editor editor = Application.DocumentManager.MdiActiveDocument.Editor;
-      StringBuilder stringBuilder = new StringBuilder();
-      stringBuilder.AppendLine("\nДанная программа предназначена на данный момент");
-      stringBuilder.AppendLine("только для удаления невидимых объектов, некоей \"Siberia\"");
-      stringBuilder.AppendLine("(предположительно, Autodesk СПДС, без наличия оного)");
-      stringBuilder.AppendLine("ПРИМЕНЕНИЕ: команда SiberiaRemove");
-      stringBuilder.AppendLine("\nКопирайт: ООО \"НСК-Проект\"");
-      editor.WriteMessage(stringBuilder.ToString());
 
 
-      //Application.DocumentManager.DocumentCreated += new DocumentCollectionEventHandler(this.DocumentManager_DocumentCreated);
-
-    }
-    void IExtensionApplication.Terminate()
-    {
-    }
-
-
-    public const string AppName = "Siberia";
 
     /// <summary>
-    /// Ректрор на создание/ открытие нового чертежа
+    /// Загрузка библиотеки
+    /// http://through-the-interface.typepad.com/through_the_interface/2007/03/getting_the_lis.html
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void DocumentManager_DocumentCreated(object sender, DocumentCollectionEventArgs e)
+    #region 
+    public void Initialize()
     {
-      //Application.DocumentManager.MdiActiveDocument.CommandWillStart += new CommandEventHandler(this.MdiActiveDocument_CommandWillStart);
+      String assemblyFileFullName = GetType().Assembly.Location;
+      String assemblyName = System.IO.Path.GetFileName(
+                                                GetType().Assembly.Location);
 
-      Database database = Application.DocumentManager.MdiActiveDocument.Database;
+      // Just get the commands for this assembly
+      App.DocumentCollection dm = App.Application.DocumentManager;
+      Assembly asm = Assembly.GetExecutingAssembly();
 
-      using (DBDictionary dBDictionary = database.NamedObjectsDictionaryId.Open(OpenMode.ForRead) as DBDictionary)
+      // Сообщаю о том, что произведена загрузка сборки 
+      //и указываю полное имя файла,
+      // дабы было видно, откуда она загружена
+
+      Ed.Editor editor = App.Application.DocumentManager.MdiActiveDocument.Editor;
+      StringBuilder stringBuilder = new StringBuilder();
+      stringBuilder.AppendLine($"\n Assembly, {assemblyName}, Loaded");
+      stringBuilder.AppendLine($"\nAssembly File:{ assemblyFileFullName}");
+      stringBuilder.AppendLine("\nДанная программа предназначена, на данный момент,");
+      stringBuilder.AppendLine("только для удаления невидимых объектов, некоей \"Siberia\"");
+      stringBuilder.AppendLine("(предположительно, Autodesk СПДС, без наличия оного)");
+      stringBuilder.AppendLine("\nCopyright © ООО \'НСК-Проект\' written by Владимир Шульжицкий, 01.2020");
+      editor.WriteMessage(stringBuilder.ToString());
+
+      //Вывожу список комманд определенных в библиотеке
+      App.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage
+        ("\nСписок команд реализованных в библиотеке: \n\n");
+
+      string[] cmds = GetCommands(asm, false);
+      foreach (string cmd in cmds)
+        App.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage
+          (cmd + "\n");
+
+      App.Application.DocumentManager.MdiActiveDocument.Editor.WriteMessage
+        ("\n\nКонец списка.\n");
+    }
+
+    public void Terminate()
+    {
+      Console.WriteLine("finish!");
+    }
+
+    /// <summary>
+    /// Получение списка комманд определенных в сборке
+    /// </summary>
+    /// <param name="asm"></param>
+    /// <param name="markedOnly"></param>
+    /// <returns></returns>
+    private static string[] GetCommands(Assembly asm, bool markedOnly)
+    {
+      List<string> result = new List<string>();
+      object[] objs =
+        asm.GetCustomAttributes(typeof(Rtm.CommandClassAttribute), true);
+      Type[] tps;
+      int numTypes = objs.Length;
+      if (numTypes > 0)
       {
-        if (dBDictionary.Contains(AppName))
+        tps = new Type[numTypes];
+        for (int i = 0; i < numTypes; i++)
         {
-          ObjectId SiberiaDicId = (ObjectId)dBDictionary[AppName];
-
-          using (DBDictionary SiberiaDic = SiberiaDicId.Open(OpenMode.ForRead) as DBDictionary)
+          Rtm.CommandClassAttribute cca =
+            objs[i] as Rtm.CommandClassAttribute;
+          if (cca != null)
           {
-            //SiberiaDic.Modified += new EventHandler
+            tps[i] = cca.Type;
           }
-
         }
       }
+      else
+      {
+        // If we're only looking for specifically
+        // marked CommandClasses, then use an
+        // empty list
+        if (markedOnly)
+          tps = new Type[0];
+        else
+          tps = asm.GetExportedTypes();
+      }
+      foreach (Type tp in tps)
+      {
+        MethodInfo[] meths = tp.GetMethods();
+        foreach (MethodInfo meth in meths)
+        {
+          objs = meth.GetCustomAttributes(typeof(Rtm.CommandMethodAttribute), true);
+          foreach (object obj in objs)
+          {
+            Rtm.CommandMethodAttribute attb =
+                (Rtm.CommandMethodAttribute)obj; result.Add(attb.GlobalName);
+          }
+        }
+      }
+      //string[] ret = new string[result.Count];
+      //result.CopyTo(ret, 0);
+
+      return result.ToArray();
     }
+    #endregion
 
 
-
-    private void OnObjectModified(object sender, ObjectEventArgs e)
-    {
-
-    }
-
-    ///// <summary>
-    ///// Реактор на начало команды и если эта команда MIRROR, то действуем!!
-    ///// Включаем отслеживание создаваемых объектов, для того, что бы по завершении команды привести их в порядок
-    ///// </summary>
-    ///// <param name="sender"></param>
-    ///// <param name="e"></param>
-    //private void MdiActiveDocument_CommandWillStart(object sender, CommandEventArgs e)
+    //void IExtensionApplication.Initialize()
     //{
-    //  ids.Clear();
-    //  if (e.GlobalCommandName == "MIRROR")
-    //  {
-    //    App.Application.DocumentManager.MdiActiveDocument.Database.ObjectModified += new Db.ObjectEventHandler(this.Database_ObjectModified);
-    //    App.Application.DocumentManager.MdiActiveDocument.CommandCancelled += new App.CommandEventHandler(this.MdiActiveDocument_CommandCancelled);
-    //    App.Application.DocumentManager.MdiActiveDocument.CommandEnded += new App.CommandEventHandler(this.MdiActiveDocument_CommandEnded);
-    //    App.Application.DocumentManager.MdiActiveDocument.CommandFailed += new App.CommandEventHandler(this.MdiActiveDocument_CommandFailed);
-    //  }
-    //}
+    //  Editor editor = Application.DocumentManager.MdiActiveDocument.Editor;
+    //  StringBuilder stringBuilder = new StringBuilder();
+    //  stringBuilder.AppendLine("\nДанная программа предназначена на данный момент");
+    //  stringBuilder.AppendLine("только для удаления невидимых объектов, некоей \"Siberia\"");
+    //  stringBuilder.AppendLine("(предположительно, Autodesk СПДС, без наличия оного)");
+    //  stringBuilder.AppendLine("ПРИМЕНЕНИЕ: команда SiberiaRemove");
+    //  stringBuilder.AppendLine("\nКопирайт: ООО \"НСК-Проект\"");
+    //  editor.WriteMessage(stringBuilder.ToString());
 
+
+    //  //Application.DocumentManager.DocumentCreated += new DocumentCollectionEventHandler(this.DocumentManager_DocumentCreated);
+
+    //}
 
   }
 }
