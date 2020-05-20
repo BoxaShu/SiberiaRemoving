@@ -87,7 +87,7 @@ namespace SiberiaRemoving
           mdiActiveDocument.Editor.WriteMessage($"\n {file} // {cur}/{lim} ({GetTik(stopWatch)}");
 
           System.IO.FileInfo fileInfo = new System.IO.FileInfo(file);
-          
+
           //TODO тут надо бы резервное копирование предусмотреть... но нафиг надо
           //System.IO.File.Copy(file, $"{file}.");
 
@@ -97,12 +97,18 @@ namespace SiberiaRemoving
             {
               using (Database db = new Database(false, true))
               {
+                // https://www.theswamp.org/index.php?topic=42016.0
+                //Database db = HostApplicationServices.WorkingDatabase;
+                //Document doc = Application.DocumentManager.GetDocument(db);
+                //doc.CloseAndSave(file);
                 db.ReadDwgFile(file, FileOpenMode.OpenForReadAndAllShare, false, null);
                 db.CloseInput(true);
                 raport.Add($"\nClean file:{file}");
                 raport.Add(Remover(db));
 
-                db.SaveAs(file, DwgVersion.Current);
+                db.SaveAs(file, true, DwgVersion.Current, db.SecurityParameters);
+                db.CloseInput(true);
+
                 //db.Save();
                 //db.CloseInput(true);
               }
