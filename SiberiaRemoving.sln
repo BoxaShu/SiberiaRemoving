@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29609.76
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2017", "SiberiaRemoving\SiberiaRemoving_2017.csproj", "{C59AB702-C480-45E3-B7BF-FB445BD0CA53}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2019", "SiberiaRemoving_2019\SiberiaRemoving_2019.csproj", "{AF81A2D3-2A9D-465F-AE9C-FD0A2CAE2D71}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2020", "SiberiaRemoving_2020\SiberiaRemoving_2020.csproj", "{8B8958FF-98A5-4A44-BCEF-A85015977D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiberiaRemoving_2022", "SiberiaRemoving_2022\SiberiaRemoving_2022.csproj", "{5DBD0400-F8D7-4B5B-A230-1E12CE4E082E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{8B8958FF-98A5-4A44-BCEF-A85015977D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B8958FF-98A5-4A44-BCEF-A85015977D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B8958FF-98A5-4A44-BCEF-A85015977D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DBD0400-F8D7-4B5B-A230-1E12CE4E082E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DBD0400-F8D7-4B5B-A230-1E12CE4E082E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DBD0400-F8D7-4B5B-A230-1E12CE4E082E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DBD0400-F8D7-4B5B-A230-1E12CE4E082E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

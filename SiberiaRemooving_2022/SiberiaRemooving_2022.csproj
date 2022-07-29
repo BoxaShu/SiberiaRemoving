@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SiberiaRemoving\CommandClass.cs" Link="CommandClass.cs" />
+    <Compile Include="..\SiberiaRemoving\Initialization.cs" Link="Initialization.cs" />
+    <Compile Include="..\SiberiaRemoving\ReferencedBy.cs" Link="ReferencedBy.cs" />
+    <Compile Include="..\SiberiaRemoving\ReferenceFiler.cs" Link="ReferenceFiler.cs" />
+    <Compile Include="..\SiberiaRemoving\XDataExtantion.cs" Link="XDataExtantion.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoCAD.NET" Version="24.0.0" />
+  </ItemGroup>
+
+</Project>
